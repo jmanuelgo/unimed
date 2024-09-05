@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             // Si no hay datos, inicializar con valores predeterminados
             usuarios.add(new Usuario("Juan", "Pérez", "001", "jperez", "password123", "Calle Falsa 123"));
             usuarios.add(new Usuario("Ana", "López", "002", "alopez", "pass456", "Avenida Siempre Viva 456"));
-            usuarios.add(new Usuario("Carlos", "Gómez", "003", "cgomez", "123456", "Boulevard de los Sueños 789"));
+            usuarios.add(new Usuario("Carlos", "Gómez", "003", "123", "123", "Boulevard de los Sueños 789"));
         }
 
         // Inicializar vistas
@@ -92,10 +92,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (Usuarioencontrado) {
-            Intent Datos = new Intent(getApplicationContext(), BotonPrincipal.class);
-            Datos.putExtra("nombre", nombreSeleccionado);
-            Datos.putExtra("apellido", apellidoSelecionado);
-            startActivity(Datos);
+            // Navega al SplashActivity en lugar de BotonPrincipal directamente
+            Intent splashIntent = new Intent(getApplicationContext(), SplashActivity.class);
+            splashIntent.putExtra("nombre", nombreSeleccionado);
+            splashIntent.putExtra("apellido", apellidoSelecionado);
+            startActivity(splashIntent);
+            overridePendingTransition(R.anim.enter, R.anim.exit);
         } else {
             Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
             usuario.setText("");

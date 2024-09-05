@@ -3,6 +3,7 @@ package com.example.appunimed;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,14 +42,17 @@ public class EspecialidadAdapter extends RecyclerView.Adapter<EspecialidadAdapte
     public static class EspecialidadViewHolder extends RecyclerView.ViewHolder {
 
         private TextView nombreEspecialidad;
+        private ImageView logoEspecialidad;  // Añadido el ImageView para el logo
 
         public EspecialidadViewHolder(@NonNull View itemView) {
             super(itemView);
             nombreEspecialidad = itemView.findViewById(R.id.tvEspecialidades);
+            logoEspecialidad = itemView.findViewById(R.id.logoEspecialidad);  // Asignar referencia al ImageView
         }
 
         public void bind(Especialidad especialidad, OnEspecialidadClickListener listener) {
             nombreEspecialidad.setText(especialidad.getNombreEspecialidad());
+            logoEspecialidad.setImageResource(especialidad.getLogoResId());  // Establecer el logo de la especialidad
             itemView.setOnClickListener(v -> listener.onEspecialidadClick(especialidad));
         }
     }

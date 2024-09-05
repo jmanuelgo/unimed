@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class Especialidad implements Serializable {
     String nombreEspecialidad;
     ArrayList<Doctor> doctor;
+    private int logoResId;
 
-    public Especialidad(String nombreEspecialidad, ArrayList<Doctor> doctor) {
+    public Especialidad(String nombreEspecialidad, ArrayList<Doctor> doctor,int logoResId) {
         this.nombreEspecialidad = nombreEspecialidad;
         this.doctor = doctor;
+        this.logoResId = logoResId;
     }
 
     public String getNombreEspecialidad() {
@@ -26,5 +28,8 @@ public class Especialidad implements Serializable {
 
     public void setDoctor(ArrayList<Doctor> doctor) {
         this.doctor = doctor;
+    }
+    public int getLogoResId() {
+        return logoResId;
     }
 }
